@@ -1,0 +1,21 @@
+{
+  "name": "@dayone/landing",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.12"
+  },
+  "dependencies": {
+    "@dayone-team/tokens": "^3.0.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "pixi-live2d-display": "^0.4.0",
+    "pixi.js": "^6.5.10",
+    "tailwindcss": "^4.3.1"
+  }
+}

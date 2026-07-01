@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
+    <title>Dayone - Learn with Your AI Companion</title>
+    <meta
+      name="description"
+      content="An online learning platform powered by AI assistants. Each agent is a companion who journeys with you on every path."
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/assets/live2dcubismcore.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/595b46303d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+
+  <body class="flex flex-col">
+    <header
+      class="sticky top-0 z-50 border-b border-border/10 bg-background/88 backdrop-blur-2xl transition-all duration-300"
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3"
+      >
+        <a href="#" class="group flex items-center gap-2.5 min-w-0 shrink-0">
+          <img
+            src="./img/logo.png"
+            alt="Dayone Logo"
+            class="size-7 object-contain rounded-md"
+          />
+          <span
+            class="truncate text-2xl tracking-tight font-display font-bold text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary-strong)]"
+            >Dayone</span
+          >
+        </a>
+
+        <nav class="hidden md:flex items-center gap-1">
+          <a
+            href="#features"
+            class="px-3 py-2 text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] transition-colors rounded-lg hover:bg-muted/52"
+            >Features</a
+          >
+          <a
+            href="#characters"
+            class="px-3 py-2 text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] transition-colors rounded-lg hover:bg-muted/52"
+            >Characters</a
+          >
+          <a
+            href="#how-it-works"
+            class="whitespace-nowrap px-3 py-2 text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] transition-colors rounded-lg hover:bg-muted/52"
+            >How It Works</a
+          >
+          <a
+            href="#instructors"
+            class="px-3 py-2 text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] transition-colors rounded-lg hover:bg-muted/52"
+            >Instructors</a
+          >
+          <a
+            href="#platforms"
+            class="px-3 py-2 text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] transition-colors rounded-lg hover:bg-muted/52"
+            >Platforms</a
+          >
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button
+            id="menu-toggle"
+            class="md:hidden flex items-center justify-center size-10 rounded-xl hover:bg-muted/52 transition-colors"
+            aria-label="Open menu"
+          >
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+          <div class="hidden lg:block">
+            <a href="#" class="btn-primary !py-2.5 !text-base"
+              >Download Desktop App</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ════════════════════════════════════════════
+       DRAWER OVERLAY + MENU (mobile only)
+       ════════════════════════════════════════════ -->
+    <div
+      id="drawer-overlay"
+      class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"
+    ></div>
+
+    <div
+      id="drawer-menu"
+      class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80vw] bg-[var(--background)] border-l border-border/60 shadow-2xl translate-x-full transition-transform duration-300 ease-in-out"
+    >
+      <button
+        id="drawer-close"
+        class="absolute top-5 right-4 size-8 rounded-lg bg-muted/55 hover:bg-muted/75 transition-colors grid place-items-center"
+        aria-label="Close menu"
+      >
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <nav class="flex flex-col p-4 gap-1">
+        <a
+          href="#features"
+          class="px-4 py-3 rounded-xl text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] hover:bg-muted/52 transition-colors"
+          >Features</a
+        >
+        <a
+          href="#characters"
+          class="px-4 py-3 rounded-xl text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] hover:bg-muted/52 transition-colors"
+          >Characters</a
+        >
+        <a
+          href="#how-it-works"
+          class="px-4 py-3 rounded-xl text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] hover:bg-muted/52 transition-colors"
+          >How It Works</a
+        >
+        <a
+          href="#instructors"
+          class="px-4 py-3 rounded-xl text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] hover:bg-muted/52 transition-colors"
+          >Instructors</a
+        >
+        <a
+          href="#platforms"
+          class="px-4 py-3 rounded-xl text-sm font-medium text-foreground/88 hover:text-[var(--primary-strong)] hover:bg-muted/52 transition-colors"
+          >Platforms</a
+        >
+      </nav>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+       HERO - split-screen
+       ════════════════════════════════════════════ -->
+    <section class="relative overflow-hidden mesh-bg">
+      <div
+        class="mx-auto max-w-7xl px-6 min-h-dvh grid md:grid-cols-[2fr_1fr] items-center"
+      >
+        <!-- Left: text -->
+        <div class="relative z-10 py-10 md:pr-10 lg:pr-14">
+          <h1
+            class="font-vt323 text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight text-[var(--primary)] text-balance animate-fade-up"
+          >
+            Learn with AI Characters
+            <br class="hidden sm:block" />
+            Your Personal Companion
+          </h1>
+          <p
+            class="mt-5 max-w-lg text-lg leading-8 text-[var(--muted-foreground)] animate-fade-up-stagger"
+          >
+            Each agent is a friend with their own personality, voice, and
+            expertise. Chat by voice, attend live classes, and make progress
+            every day with Dayone.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3 animate-fade-up-stagger">
+            <a href="#how-it-works" class="btn-secondary text-base px-6 py-3">
+              Learn More
+              <i class="fa-solid fa-angle-down"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: character visuals -->
+        <div
+          class="relative z-10 hidden md:block overflow-hidden"
+          style="
+            aspect-ratio: 9/16;
+            max-height: 600px;
+            width: auto;
+            margin: 0 auto;
+          "
+        >
+          <canvas id="live2d-canvas" class="w-full h-full"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       METRICS STRIP (social proof moved out of hero)
+       ════════════════════════════════════════════ -->
+    <section class="border-y border-border/50 bg-card/50 backdrop-blur-sm">
+      <div class="mx-auto max-w-5xl px-6 py-5">
+        <div
+          class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-[var(--muted-foreground)]"
+        >
+          <div class="flex items-center gap-2">
+            <span class="flex -space-x-1.5">
+              <span
+                class="size-6 rounded-full border-2 border-[var(--card)] bg-[var(--secondary)] grid place-items-center text-[8px] font-bold text-[var(--secondary-foreground)]"
+                >H</span
+              >
+              <span
+                class="size-6 rounded-full border-2 border-[var(--card)] bg-[var(--secondary)] grid place-items-center text-[8px] font-bold text-[var(--secondary-foreground)]"
+                >K</span
+              >
+              <span
+                class="size-6 rounded-full border-2 border-[var(--card)] bg-[var(--secondary)] grid place-items-center text-[8px] font-bold text-[var(--secondary-foreground)]"
+                >A</span
+              >
+            </span>
+            <span class="font-semibold text-[var(--foreground)]">9</span>
+            AI companion characters
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-[var(--foreground)]">100+</span>
+            courses
+          </div>
+          <div class="flex items-center gap-2">
+            <span>Voice Chat</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       FEATURES - bento grid
+       ════════════════════════════════════════════ -->
+    <section id="features" class="section-spacing">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <h2
+            class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)] text-balance"
+          >
+            Everything you need to learn effectively
+          </h2>
+          <p class="mt-3 text-base leading-7 text-[var(--muted-foreground)]">
+            Combine AI Agents and online classrooms in a single platform.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 stagger-group">
+          <!-- AI Tutor (span 2 col) -->
+          <div
+            class="bento-cell lg:col-span-2 surface p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center stagger-item reveal"
+          >
+            <div
+              class="size-14 shrink-0 rounded-2xl bg-secondary/50 grid place-items-center text-2xl text-[var(--secondary-foreground)]"
+            >
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-[var(--foreground)]">
+                Smart AI Tutor
+              </h3>
+              <p class="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">
+                AI agents explain lessons, answer questions, and instructors
+                design curriculum that follows modern trends.
+              </p>
+            </div>
+          </div>
+
+          <!-- Voice (1 col) -->
+          <div
+            class="bento-cell surface p-6 flex flex-col gap-6 items-center lg:gap-0 lg:items-start stagger-item reveal"
+          >
+            <div
+              class="size-14 shrink-0 rounded-2xl bg-secondary/50 grid place-items-center text-2xl text-[var(--secondary-foreground)]"
+            >
+              <i class="fa-solid fa-microphone"></i>
+            </div>
+            <div>
+              <h3
+                class="text-lg font-semibold text-[var(--foreground)] lg:mt-4"
+              >
+                Voice Interaction
+              </h3>
+              <p class="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">
+                Chat with agents anytime, anywhere using natural voice.
+              </p>
+            </div>
+          </div>
+
+          <!-- Characters (1 col) -->
+          <div
+            class="bento-cell surface p-6 flex flex-col gap-6 items-center lg:gap-0 lg:items-start stagger-item reveal"
+          >
+            <div
+              class="size-14 shrink-0 rounded-2xl bg-secondary/50 grid place-items-center text-2xl text-[var(--secondary-foreground)]"
+            >
+              <i class="fa-solid fa-face-smile-beam"></i>
+            </div>
+            <div>
+              <h3
+                class="text-lg font-semibold text-[var(--foreground)] lg:mt-4"
+              >
+                Virtual Characters
+              </h3>
+              <p class="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">
+                Real-time expressions, gestures, and lip sync.
+              </p>
+            </div>
+          </div>
+
+          <!-- Classroom (span 2 col) -->
+          <div
+            class="bento-cell lg:col-span-2 surface p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center stagger-item reveal"
+          >
+            <div
+              class="size-14 shrink-0 rounded-2xl bg-secondary/50 grid place-items-center text-2xl text-[var(--secondary-foreground)]"
+            >
+              <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-[var(--foreground)]">
+                Live Classroom
+              </h3>
+              <p class="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">
+                Scheduled classes, real-time quizzes, leaderboards, auto
+                check-in. Instructors control each phase of the lesson.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       CHARACTERS - magnetic hover + float
+       ════════════════════════════════════════════ -->
+    <section id="characters" class="section-spacing">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span
+            class="inline-flex items-center gap-1.5 rounded-full border border-secondary/50 bg-secondary/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--secondary-foreground)]"
+          >
+            <i class="fa-solid fa-users text-[10px]"></i>
+            Characters
+          </span>
+          <h2
+            class="mt-4 font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)] text-balance"
+          >
+            Choose Your Companion
+          </h2>
+          <p class="mt-3 text-base leading-7 text-[var(--muted-foreground)]">
+            Multiple virtual characters with unique personalities, expressions,
+            and voices.
+          </p>
+        </div>
+
+        <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+          <!-- Hiyori -->
+          <div
+            class="char-card rounded-[1.5rem] overflow-hidden relative group transition-all duration-200 hover:shadow-lg stagger-item reveal aspect-[3/4]"
+          >
+            <img
+              src="./img/Hiyori.png"
+              alt="Hiyori"
+              class="absolute inset-0 w-full h-full object-cover"
+              style="animation: float-medium 6s ease-in-out infinite"
+            />
+            <div
+              class="absolute inset-x-0 bottom-0 z-10 p-3 pt-12 bg-gradient-to-t from-card/95 via-card/50 to-transparent group-hover:from-card/98 transition-all duration-300"
+            >
+              <div
+                class="bg-card/50 backdrop-blur-md rounded-xl p-3 shadow-sm group-hover:bg-card/75 group-hover:-translate-y-1 transition-all duration-300"
+              >
+                <h3 class="font-semibold text-[var(--foreground)]">Hiyori</h3>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                  Friendly, Enthusiastic
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kazuya -->
+          <div
+            class="char-card rounded-[1.5rem] overflow-hidden relative group transition-all duration-200 hover:shadow-lg stagger-item reveal aspect-[3/4]"
+          >
+            <img
+              src="./img/Kazuya.png"
+              alt="Kazuya"
+              class="absolute inset-0 w-full h-full object-cover"
+              style="animation: float-medium 6s ease-in-out 1s infinite"
+            />
+            <div
+              class="absolute inset-x-0 bottom-0 z-10 p-3 pt-12 bg-gradient-to-t from-card/95 via-card/50 to-transparent group-hover:from-card/98 transition-all duration-300"
+            >
+              <div
+                class="bg-card/50 backdrop-blur-md rounded-xl p-3 shadow-sm group-hover:bg-card/75 group-hover:-translate-y-1 transition-all duration-300"
+              >
+                <h3 class="font-semibold text-[var(--foreground)]">Kazuya</h3>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                  Energetic, Passionate
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arisa -->
+          <div
+            class="char-card rounded-[1.5rem] overflow-hidden relative group transition-all duration-200 hover:shadow-lg stagger-item reveal aspect-[3/4]"
+          >
+            <img
+              src="./img/Arisa.png"
+              alt="Arisa"
+              class="absolute inset-0 w-full h-full object-cover"
+              style="animation: float-medium 6s ease-in-out 2s infinite"
+            />
+            <div
+              class="absolute inset-x-0 bottom-0 z-10 p-3 pt-12 bg-gradient-to-t from-card/95 via-card/50 to-transparent group-hover:from-card/98 transition-all duration-300"
+            >
+              <div
+                class="bg-card/50 backdrop-blur-md rounded-xl p-3 shadow-sm group-hover:bg-card/75 group-hover:-translate-y-1 transition-all duration-300"
+              >
+                <h3 class="font-semibold text-[var(--foreground)]">Arisa</h3>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                  Gentle, Sweet
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Haku -->
+          <div
+            class="char-card rounded-[1.5rem] overflow-hidden relative group transition-all duration-200 hover:shadow-lg stagger-item reveal aspect-[3/4]"
+          >
+            <img
+              src="./img/Haku.png"
+              alt="Haku"
+              class="absolute inset-0 w-full h-full object-cover"
+              style="animation: float-medium 6s ease-in-out 0.5s infinite"
+            />
+            <div
+              class="absolute inset-x-0 bottom-0 z-10 p-3 pt-12 bg-gradient-to-t from-card/95 via-card/50 to-transparent group-hover:from-card/98 transition-all duration-300"
+            >
+              <div
+                class="bg-card/50 backdrop-blur-md rounded-xl p-3 shadow-sm group-hover:bg-card/75 group-hover:-translate-y-1 transition-all duration-300"
+              >
+                <h3 class="font-semibold text-[var(--foreground)]">Haku</h3>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                  Bad boy, Cool
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Higuchi (FIXED: was showing Haku name) -->
+          <div
+            class="char-card rounded-[1.5rem] overflow-hidden relative group transition-all duration-200 hover:shadow-lg stagger-item reveal aspect-[3/4]"
+          >
+            <img
+              src="./img/Higuchi.png"
+              alt="Higuchi"
+              class="absolute inset-0 w-full h-full object-cover"
+              style="animation: float-medium 6s ease-in-out 1.5s infinite"
+            />
+            <div
+              class="absolute inset-x-0 bottom-0 z-10 p-3 pt-12 bg-gradient-to-t from-card/95 via-card/50 to-transparent group-hover:from-card/98 transition-all duration-300"
+            >
+              <div
+                class="bg-card/50 backdrop-blur-md rounded-xl p-3 shadow-sm group-hover:bg-card/75 group-hover:-translate-y-1 transition-all duration-300"
+              >
+                <h3 class="font-semibold text-[var(--foreground)]">Higuchi</h3>
+                <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                  Calm, Thoughtful
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       HOW IT WORKS - GSAP sticky-stack (replaced 3-step)
+       ════════════════════════════════════════════ -->
+    <section id="how-it-works" class="relative mesh-bg">
+      <div class="mx-auto max-w-7xl px-6 py-12 text-center">
+        <h2
+          class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)] text-balance"
+        >
+          Three steps to start learning
+        </h2>
+      </div>
+
+      <div class="stack-wrapper">
+        <!-- Step 1 -->
+        <div
+          class="stack-card rounded-none border-x-0 mx-auto max-w-4xl p-8 md:p-12 shadow-lg md:shadow-2xl bg-card/96 border border-border/82 backdrop-blur-xl"
+        >
+          <div class="text-center max-w-lg mx-auto">
+            <div
+              class="mx-auto size-16 rounded-full bg-[linear-gradient(135deg,var(--primary-strong),var(--primary))] grid place-items-center text-2xl font-bold text-[var(--primary-foreground)] shadow-lg mb-6"
+            >
+              <i class="fa-solid fa-user-plus"></i>
+            </div>
+            <h3
+              class="text-2xl md:text-3xl font-bold font-display text-[var(--foreground)]"
+            >
+              Create an Account
+            </h3>
+            <p
+              class="mt-4 text-base leading-7 text-[var(--muted-foreground)] max-w-sm mx-auto"
+            >
+              Create a free account with email or Google. Takes only 30 seconds.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div
+          class="stack-card rounded-none border-x-0 mx-auto max-w-4xl p-8 md:p-12 shadow-lg md:shadow-2xl bg-card/96 border border-border/82 backdrop-blur-xl"
+        >
+          <div class="text-center max-w-lg mx-auto">
+            <div
+              class="mx-auto size-16 rounded-full bg-[linear-gradient(135deg,var(--primary-strong),var(--primary))] grid place-items-center text-2xl font-bold text-[var(--primary-foreground)] shadow-lg mb-6"
+            >
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3
+              class="text-2xl md:text-3xl font-bold font-display text-[var(--foreground)]"
+            >
+              Pick a Character & Course
+            </h3>
+            <p
+              class="mt-4 text-base leading-7 text-[var(--muted-foreground)] max-w-sm mx-auto"
+            >
+              Explore 9 AI characters and hundreds of courses. Pick the teacher
+              that suits you best.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div
+          class="stack-card rounded-none border-x-0 mx-auto max-w-4xl p-8 md:p-12 shadow-lg md:shadow-2xl bg-card/96 border border-border/82 backdrop-blur-xl"
+        >
+          <div class="text-center max-w-lg mx-auto">
+            <div
+              class="mx-auto size-16 rounded-full bg-[linear-gradient(135deg,var(--primary-strong),var(--primary))] grid place-items-center text-2xl font-bold text-[var(--primary-foreground)] shadow-lg mb-6"
+            >
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3
+              class="text-2xl md:text-3xl font-bold font-display text-[var(--foreground)]"
+            >
+              Learn with AI Daily
+            </h3>
+            <p
+              class="mt-4 text-base leading-7 text-[var(--muted-foreground)] max-w-sm mx-auto"
+            >
+              Interact by voice or text, track progress, join live classes. AI
+              adapts to your learning pace.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       FOR INSTRUCTORS - split layout
+       ════════════════════════════════════════════ -->
+    <section id="instructors" class="section-spacing">
+      <div class="mx-auto max-w-7xl sm:px-6">
+        <div class="sm:surface-strong rounded-[2rem] overflow-hidden">
+          <div class="grid lg:grid-cols-2">
+            <!-- Left: Content -->
+            <div class="p-8 sm:p-12 flex flex-col justify-center">
+              <span
+                class="inline-flex items-center gap-1.5 rounded-full border border-secondary/50 bg-secondary/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--secondary-foreground)] self-start"
+              >
+                <i class="fa-solid fa-graduation-cap text-[10px]"></i>
+                For Instructors
+              </span>
+              <h2
+                class="mt-5 font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)] text-balance"
+              >
+                Studio for Teachers
+              </h2>
+              <p
+                class="mt-4 text-base leading-7 text-[var(--muted-foreground)]"
+              >
+                Create courses, manage classes, interact directly with students.
+                All in one workspace.
+              </p>
+
+              <ul class="mt-8 space-y-4">
+                <li class="flex gap-3">
+                  <div
+                    class="size-6 shrink-0 rounded-lg bg-secondary/50 grid place-items-center"
+                  >
+                    <i
+                      class="fa-solid fa-check text-xs text-[var(--secondary-foreground)]"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-[var(--foreground)]">
+                      Create Courses & Roadmaps
+                    </p>
+                    <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                      Rich text editor, lectures, quizzes, attachments
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-3">
+                  <div
+                    class="size-6 shrink-0 rounded-lg bg-secondary/50 grid place-items-center"
+                  >
+                    <i
+                      class="fa-solid fa-check text-xs text-[var(--secondary-foreground)]"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-[var(--foreground)]">
+                      Live Classroom
+                    </p>
+                    <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                      Real-time SSE, quizzes, leaderboards, phase control
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-3">
+                  <div
+                    class="size-6 shrink-0 rounded-lg bg-secondary/50 grid place-items-center"
+                  >
+                    <i
+                      class="fa-solid fa-check text-xs text-[var(--secondary-foreground)]"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-[var(--foreground)]">
+                      Earn Extra Income
+                    </p>
+                    <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                      Instructors earn revenue, automatic payouts via e-wallet
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-3">
+                  <div
+                    class="size-6 shrink-0 rounded-lg bg-secondary/50 grid place-items-center"
+                  >
+                    <i
+                      class="fa-solid fa-check text-xs text-[var(--secondary-foreground)]"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-[var(--foreground)]">
+                      MoMo, ZaloPay, VNPay
+                    </p>
+                    <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+                      Integration with Vietnam's most popular payment gateways
+                    </p>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="mt-8">
+                <a
+                  href="https://studio.dayone.vn/?auth=register"
+                  class="btn-primary"
+                >
+                  Become an Instructor
+                  <i class="fa-solid fa-angle-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Visual (replaced fake dashboard) -->
+            <div
+              class="relative mesh-bg-strong p-8 flex items-center justify-center min-h-[360px]"
+            >
+              <div class="surface rounded-[1.5rem] p-6 w-full max-w-sm">
+                <div class="flex items-center gap-2 mb-5">
+                  <span
+                    class="size-2.5 rounded-full bg-[var(--primary)]"
+                  ></span>
+                  <span
+                    class="text-xs font-semibold text-[var(--muted-foreground)]"
+                    >Instructor Dashboard</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm font-semibold text-[var(--foreground)]"
+                      >Monthly Revenue</span
+                    >
+                    <span class="text-sm font-bold text-[var(--primary-strong)]"
+                      >4.2M VND</span
+                    >
+                  </div>
+                  <div
+                    class="h-2 rounded-full bg-[var(--border)] overflow-hidden"
+                  >
+                    <div
+                      class="h-full rounded-full bg-[linear-gradient(90deg,var(--primary),var(--primary-strong))]"
+                      style="width: 72%"
+                    ></div>
+                  </div>
+                  <p class="text-xs text-[var(--muted-foreground)]">
+                    Up 20% from last month
+                  </p>
+
+                  <div
+                    class="flex items-center justify-between pt-4 border-t border-border/50"
+                  >
+                    <div>
+                      <p class="text-xs text-[var(--muted-foreground)]">
+                        Active Students
+                      </p>
+                      <p class="text-lg font-bold text-[var(--foreground)]">
+                        128
+                      </p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-xs text-[var(--muted-foreground)]">
+                        Courses Created
+                      </p>
+                      <p class="text-lg font-bold text-[var(--foreground)]">
+                        15
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="flex items-center justify-between pt-4 border-t border-border/50"
+                  >
+                    <span class="text-xs text-[var(--muted-foreground)]"
+                      >Upcoming Class</span
+                    >
+                    <span
+                      class="text-xs font-semibold text-[var(--primary-strong)]"
+                      >Tonight 7:00 PM</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       PLATFORMS
+       ════════════════════════════════════════════ -->
+    <section id="platforms" class="section-spacing">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <h2
+            class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)] text-balance"
+          >
+            Learn Anywhere, Every Device
+          </h2>
+          <p class="mt-3 text-base leading-7 text-[var(--muted-foreground)]">
+            Desktop app, web studio for instructors.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3 stagger-group">
+          <div
+            class="surface rounded-[1.5rem] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 stagger-item reveal"
+          >
+            <div
+              class="size-12 rounded-2xl mesh-bg grid place-items-center text-xl text-[var(--primary-strong)]"
+            >
+              <i class="fa-solid fa-desktop"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--foreground)]">
+              Desktop App
+            </h3>
+            <p class="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">
+              Learning experience with voice/camera chat. Windows, macOS, Linux.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span
+                class="rounded-full bg-primary/12 px-2.5 py-0.5 text-[10px] font-semibold text-[var(--primary-strong)]"
+                >Windows</span
+              >
+              <span
+                class="rounded-full bg-primary/12 px-2.5 py-0.5 text-[10px] font-semibold text-[var(--primary-strong)]"
+                >macOS</span
+              >
+              <span
+                class="rounded-full bg-primary/12 px-2.5 py-0.5 text-[10px] font-semibold text-[var(--primary-strong)]"
+                >Linux</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="surface rounded-[1.5rem] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 stagger-item reveal"
+          >
+            <div
+              class="size-12 rounded-2xl mesh-bg grid place-items-center text-xl text-[var(--primary-strong)]"
+            >
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--foreground)]">
+              Studio Web
+            </h3>
+            <p class="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">
+              Create courses, manage classes, view revenue from your browser.
+            </p>
+          </div>
+
+          <div
+            class="surface rounded-[1.5rem] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 stagger-item reveal"
+          >
+            <div
+              class="size-12 rounded-2xl mesh-bg grid place-items-center text-xl text-[var(--primary-strong)]"
+            >
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--foreground)]">
+              All Devices
+            </h3>
+            <p class="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">
+              Millions of students can access your courses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       STATS
+       ════════════════════════════════════════════ -->
+    <section class="py-16 sm:py-20">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="surface-strong rounded-[2rem] p-8 sm:p-12">
+          <div class="stats-grid grid gap-8 sm:grid-cols-4 text-center">
+            <div class="reveal-scale">
+              <p
+                class="text-3xl font-bold text-[var(--primary-strong)] sm:text-4xl font-display"
+              >
+                5
+              </p>
+              <p class="mt-1 text-sm text-[var(--muted-foreground)]">
+                Companion Characters
+              </p>
+            </div>
+            <div class="reveal-scale">
+              <p
+                class="text-3xl font-bold text-[var(--primary-strong)] sm:text-4xl font-display"
+              >
+                3
+              </p>
+              <p class="mt-1 text-sm text-[var(--muted-foreground)]">
+                Platforms
+              </p>
+            </div>
+            <div class="reveal-scale">
+              <p
+                class="text-3xl font-bold text-[var(--primary-strong)] sm:text-4xl font-display"
+              >
+                1.2K
+              </p>
+              <p class="mt-1 text-sm text-[var(--muted-foreground)]">
+                Students
+              </p>
+            </div>
+            <div class="reveal-scale">
+              <p
+                class="text-3xl font-bold text-[var(--primary-strong)] sm:text-4xl font-display"
+              >
+                5.8K
+              </p>
+              <p class="mt-1 text-sm text-[var(--muted-foreground)]">
+                Lessons Created
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       CTA
+       ════════════════════════════════════════════ -->
+    <section class="py-20 sm:py-24">
+      <div class="mx-auto max-w-5xl sm:px-6">
+        <div
+          class="relative overflow-hidden rounded-[2rem] mesh-bg-strong sm:p-14 text-center"
+        >
+          <div
+            class="relative z-10 sm:surface-strong rounded-[2rem] p-8 sm:p-12"
+          >
+            <h2
+              class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)] text-balance"
+            >
+              Ready to learn with Dayone?
+            </h2>
+            <p
+              class="mt-4 mx-auto max-w-lg text-base leading-7 text-[var(--muted-foreground)]"
+            >
+              Sign up for free, pick your favorite character, and start your
+              personalized learning journey today.
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+              <a
+                href="https://studio.dayone.vn/download"
+                class="btn-secondary text-base px-8 py-3.5"
+              >
+                <i class="fa-solid fa-download"></i>
+                Download Desktop App
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════ -->
+    <footer
+      class="mt-12 border-t border-border/65 bg-[linear-gradient(180deg,color-mix(in srgb, var(--card) 82%, transparent),color-mix(in srgb, var(--card) 72%, transparent))] backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 md:grid-cols-4"
+      >
+        <div>
+          <a href="#" class="group inline-flex items-center gap-2.5 min-w-0">
+            <img
+              src="./img/logo.png"
+              alt="Dayone Logo"
+              class="size-7 object-contain rounded-md"
+            />
+            <span
+              class="truncate text-2xl tracking-tight font-display font-bold text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary-strong)]"
+              >Dayone</span
+            >
+          </a>
+          <p
+            class="mt-4 max-w-md text-sm leading-7 text-[var(--muted-foreground)]"
+          >
+            AI assistants & learning paths for each character. Each agent is an
+            independent product with its own courses, personality, and learning
+            experience.
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]"
+          >
+            Product
+          </p>
+          <ul class="mt-3 grid gap-2 text-sm">
+            <li>
+              <a
+                href="#characters"
+                class="text-foreground/88 hover:text-[var(--primary-strong)] transition-colors"
+                >Characters</a
+              >
+            </li>
+            <li>
+              <a
+                href="#features"
+                class="text-foreground/88 hover:text-[var(--primary-strong)] transition-colors"
+                >Courses</a
+              >
+            </li>
+            <li>
+              <a
+                href="#features"
+                class="text-foreground/88 hover:text-[var(--primary-strong)] transition-colors"
+                >Online Classes</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://studio.dayone.vn/download"
+                class="text-foreground/88 hover:text-[var(--primary-strong)] transition-colors"
+                >Download Desktop App</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p
+            class="text-xs font-semibold uppercase tracking-widest text-[var(--muted-foreground)]"
+          >
+            Account
+          </p>
+          <ul class="mt-3 grid gap-2 text-sm">
+            <li>
+              <a
+                href="https://studio.dayone.vn/?auth=login"
+                class="text-foreground/88 hover:text-[var(--primary-strong)] transition-colors"
+                >Log In</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://studio.dayone.vn/?auth=register"
+                class="text-foreground/88 hover:text-[var(--primary-strong)] transition-colors"
+                >Sign Up</a
+              >
+            </li>
+            <li>
+              <a
+                href="#instructors"
+                class="text-foreground/88 hover:text-[var(--primary-strong)] transition-colors"
+                >Become an Instructor</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div
+          id="theme-toggle"
+          class="h-9 w-fit grid grid-cols-3 place-items-center rounded-full border border-border/78 bg-card/78 text-[var(--muted-foreground)] transition-all"
+          aria-label="Switch Theme"
+        >
+          <button
+            id="btn-sun"
+            data-theme="light"
+            class="theme-btn size-8 flex justify-center items-center rounded-full hover:bg-primary/12 transition-colors"
+            aria-label="Light Mode"
+          >
+            <i class="fa-solid fa-sun text-sm"></i>
+          </button>
+          <button
+            id="btn-moon"
+            data-theme="dark"
+            class="theme-btn size-8 flex justify-center items-center rounded-full hover:bg-primary/12 transition-colors"
+            aria-label="Dark Mode"
+          >
+            <i class="fa-solid fa-moon text-sm"></i>
+          </button>
+          <button
+            id="btn-monitor"
+            data-theme="system"
+            class="theme-btn size-8 flex justify-center items-center rounded-full hover:bg-primary/12 transition-colors"
+            aria-label="System"
+          >
+            <i class="fa-solid fa-desktop text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="border-t border-border/55 py-4 text-center text-xs text-[var(--muted-foreground)]"
+      >
+        &copy; 2026 DayOne &mdash; Personalized learning through unique
+        characters.
+      </div>
+    </footer>
+
+    <button
+      id="scroll-top"
+      aria-label="Back to top"
+      class="fixed bottom-6 right-6 z-50 size-12 rounded-full bg-[var(--primary)] text-white shadow-lg shadow-primary/40 grid place-items-center text-lg opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-[var(--primary-strong)] hover:scale-110 hover:shadow-xl hover:shadow-primary/50 active:scale-95"
+    >
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
